@@ -1,21 +1,20 @@
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ArrayUpdation {
-   static int[] arr;
+   static ArrayList<Integer> arr = new ArrayList<Integer>();
    static int length;
 
    public static void createArray() {
       Scanner input = new Scanner(System.in);
       System.out.println("Enter the length of the array:");
       length = input.nextInt();
-      arr = new int[length];
       for (int i = 0; i < length; i++) {
          System.out.println("Enter element:");
          int val = input.nextInt();
-         arr[i] = val;
+         arr.add(val);
       }
-      System.out.println("Array Created: "+ Arrays.toString(arr));
+      System.out.println("Array Created: "+ arr);
    }
 
    public static void insertElem(int elem, int pos) {
@@ -27,37 +26,38 @@ public class ArrayUpdation {
          if yes:
             arr[i] = elem   
       */
-      int[] newArr = new int[arr.length + 1];
+      arr.add(null);
       boolean isInserted = false;
-      for (int i = arr.length - 1 ; i >= 0; i--) {
+      int i;
+      for (i = arr.size() - 2; i >= 0; i--) {
          if (pos != i) {
-            if (!isInserted) newArr[i + 1] = arr[i];
-            else newArr[i] = arr[i];
+            if (!isInserted) arr.set(i + 1, arr.get(i));
+            else continue;
          }
          else {
-            newArr[i + 1] = arr[i];
-            newArr[i] = elem;
+            arr.set(i + 1, arr.get(i));
+            arr.set(i, elem);
             isInserted = true;
          }
       }
-      arr = newArr;
-      System.out.println("Resulting Array after Addition: "+ Arrays.toString(arr));
+      
+      System.out.println("Resulting Array after Addition: "+ arr);
    }
 
    public static void deleteElem(int pos) {
       boolean isRemoved = false;
-      int[] newArr = new int[arr.length - 1];
-      for (int i = 0; i < arr.length; i++) {
+      for (int i = 0; i < arr.size(); i++) {
          if (pos != i) {
-            if (!isRemoved) newArr[i] = arr[i];
-            else newArr[i - 1] = arr[i];
+            if (!isRemoved) continue;
+            else arr.set(i - 1, arr.get(i));
          }
          else {
             isRemoved = true;
-            newArr[i] = newArr[i + 1];
+            arr.set(1, arr.get(i+1));
          }
       }
-      System.out.println("Resulting Array after Deletion: "+ Arrays.toString(newArr));
+      arr.remove(arr.size() - 1);
+      System.out.println("Resulting Array after Deletion: "+ arr);
    }
 
    public static void main(String[] args) {
