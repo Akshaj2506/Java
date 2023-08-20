@@ -15,6 +15,7 @@ public class ArrayUpdation {
          arr.add(val);
       }
       System.out.println("Array Created: "+ arr);
+      input.close();
    }
 
    public static void insertElem(int elem, int pos) {
