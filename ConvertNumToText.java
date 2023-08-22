@@ -11,5 +11,6 @@ public class ConvertNumToText {
          finalString += text[Integer.parseInt(integ.substring(i, i+1))] + " ";
       }
       System.out.println(finalString);
+      in.close();
    }
 }
