@@ -12,19 +12,21 @@ public class PrintArrayAscending {
          arr[i] = input.nextInt();
       }
       System.out.println("[LOG]: Array Created "+ Arrays.toString(arr));
-
       input.close();
+
+      sortArray(arr);
    }
    
    public static void sortArray(int[] integerBasedArray) {
       int smallestElem = integerBasedArray[0];
 
       for (int index = 0; index < integerBasedArray.length; index++) {
-         
+         if (integerBasedArray[index] > smallestElem) smallestElem =  integerBasedArray[index];
+         else continue;
+         System.out.println("Array after "+ index+ "th iteration: "+ Arrays.toString(integerBasedArray));
       }
    }
    public static void main(String[] args) {
       createArray();
-
    }
 }
