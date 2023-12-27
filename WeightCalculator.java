@@ -39,7 +39,6 @@ public class WeightCalculator {
       w1.putData();
       System.out.println("\nWeight 2 Data:");
       w2.putData();
-      System.out.println("\n");
       
       Weight w3 = w1.sumWeight(w1, w2);
       w3.putData();
